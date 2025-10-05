@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Adicionar Aula - Meu Sistema</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Mantendo CSS originais -->
+    <link rel="stylesheet" href="assets/main_default.css">
+    <link rel="stylesheet" href="assets/fonts.css">
+    <link rel="stylesheet" href="assets/hijack-styles.css">
+    <link rel="stylesheet" href="assets/select2.min.css">
+
+    <!-- Mantendo JS originais -->
+    <script src="assets/jquery.min.js"></script>
+    <script src="assets/jquery.ui.custom.min.js"></script>
+    <script src="assets/main.js"></script>
+    <script src="assets/select2.js"></script>
+    <script src="assets/nouislider.min.js"></script>
+    <script src="assets/base64.js"></script>
+    <script src="assets/tabs.js"></script>
+    <script src="assets/AulaForm.js"></script>
+    <script src="assets/widgets-core.js"></script>
+
+    <!-- Manter máscara e helpers -->
+    <script src="assets/jquery.maskedinput.js"></script>
+    <script src="assets/marcar_todos_checkbox.js"></script>
+</head>
+<body>
+<div class="holder">
+    <!-- Aqui mantém seu sidebar, header, etc. -->
+    <main id="content">
+        <div class="title-container">
+            <h2>Adicionar Aula</h2>
+        </div>
+
+        <!-- Formulário adaptado -->
+        <form id="form_aula" class="">
+            <fieldset class="module aligned ">
+                <h2>Dados da Aula</h2>
+
+                <div class="form-row quantidade ">
+                    <div class="field-box-first required">
+                        <label for="id_quantidade" title="Preenchimento obrigatório">Quantidade:</label>
+                        <input type="number" name="quantidade" id="id_quantidade" value="1" min="1">
+                    </div>
+                </div>
+
+                <div class="form-row etapa data ">
+                    <div class="field-box field-box-first required">
+                        <label for="id_etapa">Etapa:</label>
+                        <select name="etapa" id="id_etapa">
+                            <option value="1">Primeira</option>
+                            <option value="2">Segunda</option>
+                            <option value="3" selected>Terceira</option>
+                            <option value="4">Quarta</option>
+                            <option value="5">Final</option>
+                            <option value="10">Reposição</option>
+                        </select>
+                    </div>
+                    <div class="field-box field-box-later required">
+                        <label for="id_data">Data:</label>
+                        <input type="date" name="data" id="id_data" value="">
+                    </div>
+                </div>
+
+                <div class="form-row conteudo ">
+                    <div class="field-box-first required">
+                        <label for="id_conteudo">Conteúdo:</label>
+                        <textarea name="conteudo" id="id_conteudo" cols="40" rows="10" style="width:100%"></textarea>
+                    </div>
+                </div>
+            </fieldset>
+
+            <div class="submit-row">
+                <button type="button" id="btn_salvar_aula" class="btn success">Salvar Aula</button>
+            </div>
+        </form>
+    </main>
+</div>
+
+<script>
+const API_URL = "http://localhost:3000/api"; // seu backend
+const btnSalvar = document.getElementById("btn_salvar_aula");
+
+btnSalvar.addEventListener("click", async () => {
+    const quantidade = parseInt(document.getElementById("id_quantidade").value) || 1;
+    const etapa = document.getElementById("id_etapa").value;
+    const data = document.getElementById("id_data").value;
+    const conteudo = document.getElementById("id_conteudo").value;
+
+    if (!data) {
+        alert("Informe a data da aula!");
+        return;
+    }
+
+    try {
+        const resp = await fetch(`${API_URL}/aulas`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                data_aula: data,
+                quantidade_aulas: quantidade,
+                etapa: etapa,
+                conteudo: conteudo,
+                materia: "Sem nome",
+                observacao: ""
+            })
+        });
+
+        if (!resp.ok) throw new Error(`Erro HTTP ${resp.status}`);
+
+        const result = await resp.json();
+        alert(`Aula cadastrada com sucesso! ID: ${result.id}`);
+        document.getElementById("form_aula").reset();
+    } catch (err) {
+        console.error("Erro ao cadastrar aula:", err);
+        alert("Erro ao cadastrar aula. Veja console para detalhes.");
+    }
+});
+</script>
+</body>
+</html>

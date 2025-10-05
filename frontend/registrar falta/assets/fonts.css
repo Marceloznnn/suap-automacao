@@ -1,0 +1,56 @@
+@font-face {
+    font-family: "Carlito";
+    font-style: normal;
+    font-weight: normal;
+    src: url('/static/ckeditor/ckeditor/fonts/carlito/Carlito-Regular.ttf');
+    src: url('/static/ckeditor/ckeditor/fonts/carlito/Carlito-Regular.ttf') format("truetype");
+}
+@font-face {
+    font-family: "Carlito";
+    font-style: normal;
+    font-weight: bold;
+    src: url('/static/ckeditor/ckeditor/fonts/carlito/Carlito-Bold.ttf');
+    src: url('/static/ckeditor/ckeditor/fonts/carlito/Carlito-Bold.ttf') format("truetype");
+}
+@font-face {
+    font-family: "Carlito";
+    font-style: italic;
+    font-weight: normal;
+    src: url('/static/ckeditor/ckeditor/fonts/carlito/Carlito-Italic.ttf');
+    src: url('/static/ckeditor/ckeditor/fonts/carlito/Carlito-Italic.ttf') format("truetype");
+}
+@font-face {
+    font-family: "Carlito";
+    font-style: italic;
+    font-weight: bold;
+    src: url('/static/ckeditor/ckeditor/fonts/carlito/Carlito-BoldItalic.ttf');
+    src: url('/static/ckeditor/ckeditor/fonts/carlito/Carlito-BoldItalic.ttf') format("truetype");
+}
+@font-face {
+    font-family: "Calibri";
+    font-style: normal;
+    font-weight: normal;
+    src: url('/static/ckeditor/ckeditor/fonts/calibri/Calibri.ttf');
+    src: url('/static/ckeditor/ckeditor/fonts/calibri/Calibri.ttf') format("truetype");
+}
+@font-face {
+    font-family: "Calibri";
+    font-style: normal;
+    font-weight: bold;
+    src: url('/static/ckeditor/ckeditor/fonts/calibri/CALIBRIB.TTF');
+    src: url('/static/ckeditor/ckeditor/fonts/calibri/CALIBRIB.TTF') format("truetype");
+}
+@font-face {
+    font-family: "Calibri";
+    font-style: italic;
+    font-weight: normal;
+    src: url('/static/ckeditor/ckeditor/fonts/calibri/CALIBRII.TTF');
+    src: url('/static/ckeditor/ckeditor/fonts/calibri/CALIBRII.TTF') format("truetype");
+}
+@font-face {
+    font-family: "Calibri";
+    font-style: italic;
+    font-weight: bold;
+    src: url('/static/ckeditor/ckeditor/fonts/calibri/CALIBRIZ.TTF');
+    src: url('/static/ckeditor/ckeditor/fonts/calibri/CALIBRIZ.TTF') format("truetype");
+}
