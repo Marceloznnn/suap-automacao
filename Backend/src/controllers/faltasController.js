@@ -1,4 +1,16 @@
-import { registrarFaltasArquivo, registrarFaltaManual } from "../services/faltasService.js";
+import { registrarFaltasArquivo, registrarFaltaManual,listarFaltasDaAulaService } from "../services/faltasService.js";
+
+// === FUNÇÃO NOVA ===
+export async function listarFaltasDaAula(req, res) {
+  try {
+    const { id } = req.params;
+    const faltas = await listarFaltasDaAulaService(id);
+    res.json(faltas);
+  } catch (err) {
+    console.error("❌ Erro ao listar faltas da aula:", err);
+    res.status(500).json({ erro: "Erro ao listar faltas da aula" });
+  }
+}
 
 // Upload de arquivo (integração N8N)
 export async function processarFaltasArquivo(req, res) {

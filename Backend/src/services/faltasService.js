@@ -29,6 +29,18 @@ export async function registrarFaltasArquivo(caminhoArquivo, aulaId = null) {
   return { totalAlunosNoArquivo: nomes.length, faltasRegistradas };
 }
 
+// === FUNÇÃO NOVA ===
+export async function listarFaltasDaAulaService(aulaId) {
+  console.log("📌 listando faltas para aulaId =", aulaId);
+  const [rows] = await pool.query(
+    "SELECT aluno_id, quantidade FROM faltas WHERE aula_id = ?",
+    [aulaId]
+  );
+  console.log("📌 resultado da query:", rows);
+  return rows;
+}
+
+
 export async function registrarFaltaManual(alunoId, aulaId = null, quantidade = 1) {
   await pool.query(
     "INSERT INTO faltas (aluno_id, aula_id, data_falta, quantidade) VALUES (?, ?, CURRENT_DATE, ?)",
